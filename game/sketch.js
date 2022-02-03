@@ -4,7 +4,9 @@ var asteroids = [];
 function setup() {
   createCanvas(600, 600);
   ship = new Ship();
-  asteroids.push(new Asteroid());
+  for (var i = 0; i < 10; i++) {
+    asteroids.push(new Asteroid());
+  }
 }
 
 function draw() {
@@ -30,6 +32,6 @@ function keyPressed() {
   } else if (keyCode == LEFT_ARROW) {
     ship.setRotation(-0.1);
   } else if (keyCode == UP_ARROW) {
-    ship.boosting(true);  
+    ship.boosting(true);
   }
 }
