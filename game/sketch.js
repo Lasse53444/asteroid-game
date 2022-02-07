@@ -12,10 +12,6 @@ function setup() {
 
 function draw() {
   background(0);
-  ship.render();
-  ship.turn();
-  ship.update();
-  ship.edges();
 
   for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].render();
@@ -23,11 +19,26 @@ function draw() {
     asteroids[i].edges();
   }
 
-  for (let i = 0; i < lasers.length; i++) {
+  for (let i = lasers.length-1; i >= 0; i--) {
     lasers[i].render();
     lasers[i].update();
+    for (let j = asteroids.length - 1; j >= 0; j--) {
+      if (lasers[i].hits(asteroids[j])) {
+        var newAsteroids = asteroids[j].breakup();
+        console.log(newAsteroids)
+        asteroids = asteroids.concat(newAsteroids);
+        asteroids.splice(j, 1);
+        lasers.splice(i, 1);
+        break;
+      }
+    }
+
   }
 
+  ship.render();
+  ship.turn();
+  ship.update();
+  ship.edges();
 }
 
 function keyReleased() {
