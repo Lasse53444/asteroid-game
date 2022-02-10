@@ -1,2 +1,2 @@
 # asteroid-game
-hej
+- [Asteroids game](game/)
