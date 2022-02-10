@@ -5,7 +5,7 @@ function Asteroid(pos, r) {
         this.pos = createVector(random(width), random(height))
     }
     if (r) {
-        this.r = random(r * 0.5);
+        this.r = r * 0.5;
     } else {
         this.r = random(15, 50)
     }
@@ -14,7 +14,7 @@ function Asteroid(pos, r) {
     this.total = floor(random(5, 15));
     this.offset = []
     for (let i = 0; i < this.total; i++) {
-        this.offset[i] = random(-this.r * 0.5, this.r * 0.5);
+       this.offset[i] = random(-this.r * 0.5, this.r * 0.5);
     }
 
     this.update = function () {

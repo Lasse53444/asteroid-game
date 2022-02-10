@@ -19,19 +19,20 @@ function Ship() {
     }
 
     this.boost = function () {
-        var force = p5.Vector.fromAngle(this.heading);
+        let force = p5.Vector.fromAngle(this.heading);
         force.mult(0.17);
         this.vel.add(force);
     }
 
     this.hits = function (asteroid) {
-        var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y)
+        let d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y)
         if (d < this.r + asteroid.r) {
             return true;
         } else {
             return false;
         }
     }
+    
     this.render = function () {
         push();
         translate(this.pos.x, this.pos.y);
