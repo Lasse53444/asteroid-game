@@ -45,19 +45,24 @@ function draw() {
   ship.edges();
 }
 
-function keyReleased() {
-  ship.setRotation(0);
-  ship.boosting(false);
-}
-
 function keyPressed() {
   if (key == ' ') {
     lasers.push(new Laser(ship.pos, ship.heading));
-  } else if (keyCode == RIGHT_ARROW) {
+  }
+  if (keyCode == RIGHT_ARROW) {
     ship.setRotation(0.1);
-  } else if (keyCode == LEFT_ARROW) {
+  }
+  if (keyCode == LEFT_ARROW) {
     ship.setRotation(-0.1);
-  } else if (keyCode == UP_ARROW) {
+  }
+  if (keyCode == UP_ARROW) {
     ship.boosting(true);
   }
+}
+
+function keyReleased() {
+  if (keyCode == UP_ARROW) {
+    ship.boosting(false);
+  }
+  ship.setRotation(0);
 }
