@@ -16,6 +16,10 @@ function draw() {
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
       console.log('DEAD')
+      push()
+      fill(255)
+      text("you dead", windowWidth / 2, windowHeight / 2)
+      pop()
     }
     asteroids[i].render();
     asteroids[i].update();
